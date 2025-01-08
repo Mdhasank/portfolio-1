@@ -99,3 +99,55 @@ window.onload = function () {
 function setTheme(theme) {
     document.body.className = theme;
 }
+
+// stats
+let hasScrolled = false;
+
+function startCounter() {
+    const projectsCounter = document.getElementById('projects-counter');
+    const clientsCounter = document.getElementById('clients-counter');
+    const experienceCounter = document.getElementById('experience-counter');
+
+    let projects = 0;
+    let clients = 0;
+    let experience = 0;
+
+    const projectsTarget = 37;
+    const clientsTarget = 34;
+    const experienceTarget = 5;
+
+    const incrementCounters = () => {
+        if (projects < projectsTarget) {
+            projects += 1;
+            projectsCounter.textContent = projects;
+        }
+        if (clients < clientsTarget) {
+            clients += 1;
+            clientsCounter.textContent = clients;
+        }
+        if (experience < experienceTarget) {
+            experience += 1;
+            experienceCounter.textContent = experience;
+        }
+    };
+
+    const interval = setInterval(() => {
+        incrementCounters();
+        if (projects >= projectsTarget && clients >= clientsTarget && experience >= experienceTarget) {
+            clearInterval(interval);
+        }
+    }, 60);
+}
+
+const section = document.getElementById('stats');
+window.addEventListener('scroll', () => {
+    if (!hasScrolled && isInViewport(section)) {
+        startCounter();
+        hasScrolled = true;
+    }
+});
+
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+}

@@ -659,7 +659,7 @@ section .title::after{
     float: left;
     background-color: var(--primary-color);
 }
-.html, .css, .js, .php {
+.html, .css, .js, .php, .mysql, .wordpress {
     width: 0;
     transition: width 2s;
 }
@@ -1001,4 +1001,30 @@ footer span a:hover{
         font-size: 23px;
         line-height: 38px;
     }
+}
+/* stats */
+#stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+    background-color: #111;
+}
+
+#stats .counter {
+    text-align: center;
+    font-size: 24px;
+}
+
+#stats h3 {
+    font-size: 18px;
+    color: #ffffff;
+    font-family: sans-serif;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+#stats span {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
 }
